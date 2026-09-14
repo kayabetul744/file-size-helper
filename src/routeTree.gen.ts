@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MangaRouteImport } from './routes/manga'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as BolumSlugRouteImport } from './routes/bolum.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MangaRoute = MangaRouteImport.update({
+  id: '/manga',
+  path: '/manga',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BolumSlugRoute = BolumSlugRouteImport.update({
+  id: '/bolum/$slug',
+  path: '/bolum/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/manga': typeof MangaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/bolum/$slug': typeof BolumSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/manga': typeof MangaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/bolum/$slug': typeof BolumSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/manga': typeof MangaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/bolum/$slug': typeof BolumSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/manga' | '/sitemap.xml' | '/bolum/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/manga' | '/sitemap.xml' | '/bolum/$slug'
+  id: '__root__' | '/' | '/manga' | '/sitemap.xml' | '/bolum/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MangaRoute: typeof MangaRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BolumSlugRoute: typeof BolumSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/manga': {
+      id: '/manga'
+      path: '/manga'
+      fullPath: '/manga'
+      preLoaderRoute: typeof MangaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bolum/$slug': {
+      id: '/bolum/$slug'
+      path: '/bolum/$slug'
+      fullPath: '/bolum/$slug'
+      preLoaderRoute: typeof BolumSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MangaRoute: MangaRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BolumSlugRoute: BolumSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,12 +1,12 @@
-# File Size Helper
+# Heartwarming Tales
 
-sana bir zip dosyası paylaşmak istiyorum ama dosya çok uzun max. 20 mb olmalı diye hata verip kabul etmiyor. ne yapmam gerek?
+bu projede kanlı hikayeler falan diyor. Bunu bir yarışma için hazırlıyorum. kanlı ibareler olmamalı. Görseller ve yazılarda da aynı şekilde  şiddet içerikli şeyler olmamalı. Bununla beraber kalan hikayeleri de yapmanı istiyorum.
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c10bec95-ccd7-4fab-88fd-fb769135c780).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ee319591-4940-4efe-9ca2-95b9f76f04b7).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
